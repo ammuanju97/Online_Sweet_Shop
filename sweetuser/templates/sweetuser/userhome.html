@@ -1,0 +1,124 @@
+{% load static %}
+<html lang="en">
+<head>
+  <title>Userhome</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+ 
+  <link rel="stylesheet" href="{% static 'css/userhome.css' %}">
+
+
+    <nav class="navbar navbar-expand-sm   navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'userhome' %}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown dmenu">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+               Profile
+              </a>
+              <div class="dropdown-menu sm-menu">
+                <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
+                <a class="dropdown-item" href="#">service 2</a>
+                <a class="dropdown-item" href="#">service 3</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Our Service
+            </a>
+            <div class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="#">service2</a>
+              <a class="dropdown-item" href="#">service 2</a>
+              <a class="dropdown-item" href="#">service 3</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Call</a>
+          </li>
+           <!-- <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Dropdown link
+            </a>
+            <div class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href="#">Link 1</a>
+              <a class="dropdown-item" href="#">Link 2</a>
+              <a class="dropdown-item" href="#">Link 3</a>
+              <a class="dropdown-item" href="#">Link 4</a>
+              <a class="dropdown-item" href="#">Link 5</a>
+              <a class="dropdown-item" href="#">Link 6</a>
+            </div>
+          </li> -->
+          </ul>
+          <div class="social-part">
+            {% if user.is_authenticated %}
+           
+              <a href="">Welcome, {{user.username}}</a>&nbsp;&nbsp;
+           
+            {% endif %}
+                <a  href="{% url 'user-logout' %}">LogOut</a>
+             
+            <!-- <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i> -->
+          </div>
+        </div>
+      </nav>
+    </head>
+    <body>
+ 
+      <section class="py-5">
+     
+        <div class="container px-4 px-lg-5 mt-5">
+    
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+              {% for pro in product %}
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                             <!-- Product image-->
+                           
+                <img class="card-img-top" src="{{pro.image.url}}" height="150"alt="..."/>
+              </a>
+                              <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                      <!-- Product name-->
+                                    <h5 class="fw-bolder">{{pro.product_name}}</h5>
+                                      <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                          <div class="bi-star-fill"></div>
+                                          <div class="bi-star-fill"></div>
+                                          <div class="bi-star-fill"></div>
+                                          <div class="bi-star-fill"></div>
+                                          <div class="bi-star-fill"></div>
+                                    </div>
+                                      <!-- Product price-->
+                            </div>
+                            </div>
+
+                      
+                        </div>
+                      </div>
+                      {% endfor %}
+              </div>
+              </div>
+             </section>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="{% static 'js/userhome.js' %}"></script>
+
+</html>
